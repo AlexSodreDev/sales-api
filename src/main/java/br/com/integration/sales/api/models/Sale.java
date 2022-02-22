@@ -1,19 +1,18 @@
-package br.com.integration.sales.api;
+package br.com.integration.sales.api.models;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.List;
+import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,19 +28,19 @@ public class Sale implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "SALE_ID")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "ID")
   private Long id;
 
+  @JsonFormat(pattern = "yyyy-MM-dd")
   @Column(name = "SALED_AT")
-  private Timestamp saledAt;
+  private LocalDate saledAt;
 
-  @Column(name = "VALUE")
-  private Integer value;
+  @JoinColumn(name = "SALE_VALUE")
+  private Double saleValue;
 
+  @ManyToOne
   @JoinColumn(name = "SELLER_ID")
-  private String sellerId;
+  private Seller sellers;
 
-  @OneToMany(mappedBy = "sale", targetEntity = Seller.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  private List<Seller> sellers;
 }
