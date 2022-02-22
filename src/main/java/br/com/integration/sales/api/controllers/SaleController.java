@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.integration.sales.api.dtos.CreateSaleRequestDTO;
+import br.com.integration.sales.api.exceptions.SellerNotFoundException;
 import br.com.integration.sales.api.models.Sale;
 import br.com.integration.sales.api.services.SaleService;
 
@@ -19,7 +20,7 @@ public class SaleController {
   SaleService saleService;
 
   @PostMapping("/sale")
-  public ResponseEntity<Sale> saveSale(@RequestBody CreateSaleRequestDTO sale) {
+  public ResponseEntity<Sale> saveSale(@RequestBody CreateSaleRequestDTO sale) throws SellerNotFoundException {
     Sale savedSale = saleService.create(sale);
     return ResponseEntity.status(HttpStatus.CREATED).body(savedSale);
   }
