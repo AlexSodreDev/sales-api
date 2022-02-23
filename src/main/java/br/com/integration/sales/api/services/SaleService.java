@@ -1,5 +1,6 @@
 package br.com.integration.sales.api.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,9 @@ public class SaleService {
 
     return saleRepository.save(new Sale(sale.getId(), sale.getSaledAt(), sale.getSaleValue(), existingSeller.get()));
   }
+
+  public List<Sale> listAllSales() {
+    return saleRepository.findAll();
+  }
+
 }
