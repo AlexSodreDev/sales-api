@@ -18,44 +18,10 @@ Com o build realizado corretamente, você terá acesso aos serviços através do
 http://localhost:8080
 ```
 
-## Endpoints de Acesso a API
+## Documentação Swagger API
 
-Através dos endpoints abaixo você será capaz de realizar as ações de acordo com o título.
-
-### POST - Criação de Vendedores
-
-Recebe os dados através de um objeto JSON:
-
-{
-"name": "Vendedor1",
-"salesAmount": "10",
-"dailySalesAverage": "2"
-}
+Para acessar a documentação que permite vizualizar e manipular os dados, copie e cole no navegador o link a seguir ou utilize a opção ctrl + click, é necessario estar com a API em execução;
 
 ```bash
-http://localhost:8080/seller
-```
-
-### GET - Listagem de Vendedores
-
-Realiza a listagem de todos os vendedores cadastrados:
-
-```bash
-http://localhost:8080/seller
-```
-
-### GET - Busca de Vendedores
-
-Realiza a busca de um vendedor especifico através do ID:
-
-```bash
-http://localhost:8080/seller/{id}
-```
-
-### DELETE - Exclusão de Colaboradores
-
-Realiza a exclusão de um vendedor através do ID:
-
-```bash
-http://localhost:8080/seller/{id}
+http://localhost:8080/swagger-ui/
 ```
