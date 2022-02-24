@@ -42,7 +42,11 @@ public class SellerController {
   }
 
   @GetMapping("/seller")
-  public ResponseEntity<List<SellerResponseDTO>> listSellers() {
+  public ResponseEntity<List<SellerResponseDTO>> listSellers(
+      @RequestParam(name = "startDate", defaultValue = "1900-01-01") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+      @RequestParam(name = "endDate", defaultValue = "2030-01-01") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
+    System.out.println(startDate);
+    System.out.println(endDate);
     List<SellerResponseDTO> sellers = sellerService.listSellers();
     return ResponseEntity.status(HttpStatus.OK).body(sellers);
   }
