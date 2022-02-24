@@ -1,4 +1,4 @@
-package br.com.integration.sales.api;
+package br.com.integration.sales.api.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
