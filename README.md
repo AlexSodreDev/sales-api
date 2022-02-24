@@ -20,7 +20,7 @@ http://localhost:8080
 
 ## Documentação Swagger API
 
-Para acessar a documentação que permite vizualizar e manipular os dados, copie e cole no navegador o link a seguir ou utilize a opção ctrl + click, é necessario estar com a API em execução;
+Para acessar a documentação que permite visualizar e manipular os dados, copie e cole o link a seguir no navegador ou use a opção ctrl + click, a API deve estar em execução;
 
 ```bash
 http://localhost:8080/swagger-ui/
