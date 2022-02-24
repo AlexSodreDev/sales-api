@@ -1,6 +1,15 @@
 # Sales API
 
-Aplicação com finalidade de cadastrar vendas e vendedores, através de relacionamento entre as tabelas.
+Aplicação com finalidade de cadastrar vendas e vendedores, permitindo através de relacionamento entre as tabelas o retorno de pesquisa com relacionados a um vendedor específico.
+
+## Tecnologias Neste Projeto
+
+- Java 11
+- Spring Boot
+- JUnit 5
+- Swagger
+- Lombok
+- Maven
 
 ## Instruções
 
@@ -10,12 +19,10 @@ Após ter feito o checkout do projeto, acesse sales.api, rode o comando:
 mvn clean install
 ```
 
-Com o build realizado corretamente, você terá acesso aos serviços através dos seguintes endpoints.
-
 ### Acesso a aplicação
 
 ```bash
-http://localhost:8080
+http://localhost:8080/hello
 ```
 
 ## Documentação Swagger API
