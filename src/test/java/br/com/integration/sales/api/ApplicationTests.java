@@ -1,6 +1,7 @@
 package br.com.integration.sales.api;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
 
@@ -47,6 +48,18 @@ class ApplicationTests {
 		} catch (SellerNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	void shouldThrowsAnExceptionWhenSellerDoesNotExists() {
+		CreateSaleRequestDTO createSaleRequestDTO = new CreateSaleRequestDTO();
+		createSaleRequestDTO.setSaleValue(Double.parseDouble("20.22"));
+		createSaleRequestDTO.setSaledAt(LocalDate.of(2021, 02, 01));
+		createSaleRequestDTO.setSellerId(Long.parseLong("122"));
+
+		Exception exception = assertThrows(SellerNotFoundException.class, () -> {
+			saleService.create(createSaleRequestDTO);
+		});
 	}
 
 }
