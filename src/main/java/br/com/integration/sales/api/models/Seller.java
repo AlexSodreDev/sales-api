@@ -14,6 +14,7 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,9 +23,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @NamedNativeQuery(name = "Seller.listSellersWithAvgAndSum_Named", query = "SELECT S.SELLER_NAME AS name,           (          SELECT          SUM(SALE_VALUE)          FROM SALE SA            WHERE SA.SELLER_ID = S.ID            GROUP BY SALED_AT,                      SELLER_ID                      FETCH FIRST 1 ROW ONLY ) AS averageDailySales,         (SELECT SUM(SALE_VALUE) FROM SALE WHERE SELLER_ID = S.ID)  as totalSalesAmount    FROM SELLER AS S", resultSetMapping = "Mapping.SellerResponseDTO")
+
+// @NamedNativeQuery(name = "Seller.listSellersByPeriod_Named", query = SELECT
 
 @SqlResultSetMapping(name = "Mapping.SellerResponseDTO", classes = @ConstructorResult(targetClass = SellerResponseDTO.class, columns = {
     @ColumnResult(name = "name"),
@@ -47,7 +49,7 @@ public class Seller implements Serializable {
   @Column(name = "ID")
   private Long id;
 
-  @NonNull
+  @NotBlank
   @Column(name = "SELLER_NAME")
   private String name;
 
